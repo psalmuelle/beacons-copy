@@ -1,18 +1,30 @@
 "use client";
 
-
+import { ReactNode } from "react";
+import { motion } from "framer-motion";
 
 interface BtnModel {
-    title: string;
+  children: ReactNode;
+  className?: string;
+  handleClick?: () => void;
+  bgColor: "primary" | "secondary";
+}
 
-  }
-
-const Button:React.FC<BtnModel> = ({ title }) => {
-    
+const Button: React.FC<BtnModel> = ({
+  className,
+  handleClick,
+  bgColor,
+  ...props
+}) => {
   return (
-    <button className={``}>
-      {title}
-    </button>
+    <motion.button
+      onClick={handleClick}
+      whileHover={{ opacity: 0.8 }}
+      className={`${
+        bgColor === "primary" ? "bg-primary" : "bg-secondary"
+      } text-lg text-white font-bold rounded-lg px-4 py-2 ${className}`}>
+      {props.children}
+    </motion.button>
   );
 };
 
