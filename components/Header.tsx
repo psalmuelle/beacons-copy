@@ -5,8 +5,6 @@ import { useState } from "react";
 import Button from "./Button";
 import { motion, AnimatePresence } from "framer-motion";
 
-
-
 //Nav Menu on the header
 const Nav = () => {
   const productLists = ["Chairs", "Tables", "Bed", "Workstation"];
@@ -122,7 +120,7 @@ const Header = () => {
         </div>
       )}
 
-{/** Mobile Hamburger */}
+      {/** Mobile Hamburger */}
       <div className='lg:hidden cursor-pointer'>
         <Image
           width={24}
@@ -133,14 +131,13 @@ const Header = () => {
         />
       </div>
 
-
-{/** Mobile NavMenu */}
+      {/** Mobile NavMenu */}
       <AnimatePresence>
         {openNav && (
           <motion.div
             initial={{ x: 320, y: -500, opacity: 0 }}
             animate={{ x: 0, y: 0, opacity: 1 }}
-            className='absolute bg-secondary gap-10 text-white flex justify-center items-center flex-col top-20 left-0 w-full h-[80vh] font-semibold'>
+            className='absolute lg:hidden bg-secondary gap-10 text-white flex justify-center items-center flex-col top-20 left-0 w-full h-[80vh] font-semibold'>
             <Link
               href={"/products"}
               className=' rounded-full hover:bg-gray-100 transition-all p-1.5 '>
