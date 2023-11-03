@@ -1,17 +1,16 @@
-import Image from "next/image";
+"use client";
+
+import { useState } from "react";
 
 
-const Header =()=>{
-    return (
-        <header>
-            <div className="bg-[#1e2027] p-3">
-              <Image width={100} height={20} src={'/gold-nuggets-banner-left.png'} alt={'Announcement'}/>  
-              
-            </div>
+const Header = () => {
+  const [openNav, setOpenNav] = useState(false);
 
-        </header>
-    )
-}
-
+  return (
+    <header className='relative text-size'>
+    
+    </header>
+  );
+};
 
 export default Header;
