@@ -1,15 +1,21 @@
+"use client";
+
 import Button from "@/components/Button";
 import Header from "@/components/Header";
 import Image from "next/image";
 import Link from "next/link";
 import { categories, features } from "@/appData/home";
+import ProductCard from "@/components/ProductCard";
+import products from "@/appData/products";
+import { motion } from "framer-motion";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
     <div>
       <Header />
       <main className=''>
-        <section className="h-[60vh] max-lg:h-[50vh] lg:h-[80vh] lg:bg-[url('../public/hero.png')]  max-lg:bg-[url('../public/mobile-hero.png')] bg-no-repeat bg-cover px-[4%] flex justify-start items-center ">
+        <section className="h-[60vh] min-h-[500px] max-lg:h-[50vh] lg:h-[80vh] lg:bg-[url('../public/hero.png')]  max-lg:bg-[url('../public/mobile-hero.png')] bg-no-repeat bg-cover px-[4%] flex justify-start items-center ">
           <div className='text-white max-w-2xl flex flex-col items-start gap-4'>
             <h1 className='text-5xl max-lg:text-3xl font-bold'>
               Discover Stylish Furniture to Transform Your Space!
@@ -47,30 +53,98 @@ export default function Home() {
         </div>
 
         {/* Features */}
-        <div className='mt-12 flex justify-evenly items-center gap-10 px-[4%] max-lg:hidden'>
-          {
-            features.map(val=>{
-              return(
-                <div className="flex justify-center items-center gap-4">
-                  <Image width={40} height={40} src={val.image} alt={val.title} />
-                  <div>
-                    <h2 className="text-lg font-semibold">{val.title}</h2>
-                    <p className="text-gray-500">{val.desc}</p>
-                  </div>
-                  </div>
-              )
-            })
-          }
-        </div>
+        <section className='mt-12 flex justify-evenly items-center gap-10 px-[4%] max-lg:hidden'>
+          {features.map((val) => {
+            return (
+              <div className='flex justify-center items-center gap-4'>
+                <Image width={40} height={40} src={val.image} alt={val.title} />
+                <div>
+                  <h2 className='text-lg font-semibold'>{val.title}</h2>
+                  <p className='text-gray-500'>{val.desc}</p>
+                </div>
+              </div>
+            );
+          })}
+        </section>
 
-     {/* Top Trending */}
-        <div className="text-center mt-20 max-lg:mt-10 px-[4%]">
-          <h1 className="text-5xl max-lg:text-3xl font-bold text-secondary ">Top Trending</h1>
-          <p className="text-xl max-lg:text-lg text-gray-600 font-medium max-w-2xl mt-2 mx-auto">Find a bright ideal to suit your great selection of suspension, wall, floor and table lights.</p>
-          <div className="h-1 bg-primary w-28 mx-auto my-4 rounded-md"/>
+        {/* Top Trending */}
+        <section className='text-center mt-20 max-lg:mt-10 px-[4%]'>
+          <h1 className='text-5xl max-lg:text-3xl font-bold text-secondary '>
+            Top Trending
+          </h1>
+          <p className='text-xl max-lg:text-lg text-gray-600 font-medium max-w-2xl mt-2 mx-auto'>
+            Find a bright ideal to suit your great selection of suspension,
+            wall, floor and table lights.
+          </p>
+          <div className='h-1 bg-primary w-28 mx-auto my-4 rounded-md' />
 
-        </div>
+          {/* Products */}
+          <div className='w-full overflow-x-auto overflow-y-hidden scroll-smooth'>
+            <div className='w-fit min-w-min grid grid-flow-col items-center gap-4  my-4 py-4 px-2 mx-auto'>
+              {products.map((val, i) => {
+                return i <= 3 && <ProductCard key={val.id} {...val} />;
+              })}
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                className='mx-auto w-[186px] h-[260px] bg-secondary rounded-lg text-white flex justify-center items-center cursor-pointer hover:shadow-md shadow-secondary/60 transition'>
+                See All &rarr;
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        <section className='px-[4%] bg-gradient-to-br from-[#373636]/50 via-[#E68314]/30 to-[#EFE5D5] flex flex-wrap-reverse justify-center items-center gap-8 my-20 py-10'>
+          <div className='max-w-xl flex flex-col gap-2 justify-start items-start'>
+            <h1 className='text-primary text-4xl font-bold'>
+              Customize your furniture and build your space with minifurs.
+            </h1>
+            <p className='text-[#373636] font-medium max-w-md'>
+              Allows you to view our showrooms containing our latest furniture
+              collections
+            </p>
+            <Button bgColor='secondary' className='mt-4 h-14 w-48'>
+              Coming soon...
+            </Button>
+          </div>
+          <Image width={545} height={356} src={"/egg-chair.png"} alt='' />
+        </section>
+
+        <section className='px-[4%]'>
+          <div className='flex items-center justify-center flex-wrap gap-8'>
+            <h1 className='text-[#4D533C] font-extrabold text-3xl w-80'>
+              We Have Some Awesome Products
+            </h1>
+
+            <p className='text-gray-500 max-w-2xl'>
+              Welcome to our furniture haven! Explore our awesome products
+              designed to elevate your home. Discover stylish sofas, elegant
+              dining sets, cozy beds, and smart storage solutions. Transform
+              your space with our curated collection!
+            </p>
+          </div>
+          <div className='w-full overflow-x-auto overflow-y-hidden scroll-smooth my-8'>
+            <div className='w-fit min-w-min grid grid-flow-col items-center gap-4  my-4 py-4 px-2 mx-auto'>
+              {products.map((val, i) => {
+                return i <= 3 && <ProductCard key={val.id} {...val} />;
+              })}
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                className='mx-auto w-[186px] h-[260px] bg-secondary rounded-lg text-white flex justify-center items-center cursor-pointer hover:shadow-md shadow-secondary/60 transition'>
+                See All &rarr;
+              </motion.div>
+            </div>
+          </div>
+        </section>
+        <section className=' w-4/5 bg-[#FAFAFA] py-10 px-[4%] rounded-r-lg drop-shadow-md shadow-black -mb-16'>
+          <h1 className='text-3xl max-lg:text-2xl font-bold text-secondary max-w-sm'>
+            Let's make your space amazing together
+          </h1>
+          <p className='mt-10 underline text-secondary/70 hover:text-secondary/50 cursor-pointer w-fit'>
+            REACH OUT TO US NOW
+          </p>
+        </section>
       </main>
+      <Footer/>
     </div>
   );
 }
