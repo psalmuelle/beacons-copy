@@ -35,7 +35,7 @@ const Nav = () => {
               initial={{ opacity: 0, y: -40 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
-              className='absolute top-10 flex justify-center flex-col gap-2 font-normal bg-white shadow-md p-4 rounded-b-lg'>
+              className='absolute top-10 flex justify-center flex-col gap-2 font-normal bg-white shadow-md p-4 rounded-b-lg z-50'>
               {productLists.map((product, index) => (
                 <div
                   key={index}
@@ -77,13 +77,14 @@ const Search = () => {
 
 // Header Component
 const Header = () => {
-  const login = false;
+  const login = true;
   const [openNav, setOpenNav] = useState(false);
+  const [openProfile, setOpenProfile] = useState(false);
 
   return (
     <header className='relative flex justify-between items-center px-[4%] py-4'>
-      <Link href={'/'}>
-      <Image width={110} height={55} src={"/logo.svg"} alt='Minifurs' />
+      <Link href={"/"}>
+        <Image width={110} height={55} src={"/logo.svg"} alt='Minifurs' />
       </Link>
       <div className='max-lg:hidden'>
         <Nav />
@@ -101,13 +102,28 @@ const Header = () => {
             <Image width={24} height={24} alt='favourite' src={"/Cart.svg"} />
           </Link>
 
-          <div>
+          <div className="relative">
             <Image
               width={24}
               height={24}
               alt='Profile'
               src={"/profile-pic.png"}
+              onClick={() => setOpenProfile(!openProfile)}
+              className="cursor-pointer"
             />
+            <AnimatePresence>
+              {openProfile && (
+                <motion.div
+                  initial={{ opacity: 0, y: -40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y:-20 }}
+                  className='absolute top-10 right-0 flex justify-center flex-col gap-2 font-normal bg-white shadow-md p-2 rounded-b-lg'>
+                  <div className='hover:bg-gray-50/40 px-2 py-1 rounded-lg'>
+                    <Link href={`/orders`} className='whitespace-nowrap'>My Orders</Link>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       ) : (
@@ -136,25 +152,25 @@ const Header = () => {
       <AnimatePresence>
         {openNav && (
           <motion.div
-            initial={{  y: -500, opacity: 0 }}
-            animate={{  y: 0, opacity: 1 }}
-            exit={{x:0, y:-500, opacity:0}}
-            transition={{type:'tween'}}
+            initial={{ y: -500, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ x: 0, y: -500, opacity: 0 }}
+            transition={{ type: "tween" }}
             className='absolute lg:hidden bg-secondary gap-10 text-white flex justify-center items-center flex-col top-20 left-0 w-full h-[80vh] font-semibold z-50'>
             <Link
               href={"/products"}
-              className=' rounded-full hover:bg-gray-100 transition-all p-1.5 '>
+              className=' rounded-full transition-all p-1.5 '>
               Products
             </Link>
             {login ? (
               <div className=' flex justify-center items-center flex-col gap-10'>
-                <div className='cursor-pointer rounded-full hover:bg-gray-100 transition-all p-1.5 '>
+                <div className='cursor-pointer rounded-full transition-all p-1.5 '>
                   Favourites
                 </div>
 
                 <Link
                   href={"/cart"}
-                  className=' rounded-full hover:bg-gray-100 transition-all p-1.5 '>
+                  className=' rounded-full transition-all p-1.5 '>
                   My Cart
                 </Link>
                 <Link href={"/blogs"}>Blogs</Link>
@@ -162,9 +178,9 @@ const Header = () => {
               </div>
             ) : (
               <div className='flex justify-center items-center flex-col gap-10'>
-                 <Link href={"/blogs"}>Blogs</Link>
+                <Link href={"/blogs"}>Blogs</Link>
                 <Link href={"/contact"}> Contact</Link>
-                <Link href={"/login"} className='font-bold text-lg  px-2 py-1'>
+                <Link href={"/login"} className='font-bold text-lg px-2 py-1'>
                   Login
                 </Link>
                 <Button bgColor='primary' className='w-[250px] h-[48px]'>
