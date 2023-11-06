@@ -77,13 +77,14 @@ const Search = () => {
 
 // Header Component
 const Header = () => {
-  const login = true;
+  const login = false;
   const [openNav, setOpenNav] = useState(false);
 
   return (
     <header className='relative flex justify-between items-center px-[4%] py-4'>
+      <Link href={'/'}>
       <Image width={110} height={55} src={"/logo.svg"} alt='Minifurs' />
-
+      </Link>
       <div className='max-lg:hidden'>
         <Nav />
       </div>
@@ -135,9 +136,11 @@ const Header = () => {
       <AnimatePresence>
         {openNav && (
           <motion.div
-            initial={{ x: 320, y: -500, opacity: 0 }}
-            animate={{ x: 0, y: 0, opacity: 1 }}
-            className='absolute lg:hidden bg-secondary gap-10 text-white flex justify-center items-center flex-col top-20 left-0 w-full h-[80vh] font-semibold'>
+            initial={{  y: -500, opacity: 0 }}
+            animate={{  y: 0, opacity: 1 }}
+            exit={{x:0, y:-500, opacity:0}}
+            transition={{type:'tween'}}
+            className='absolute lg:hidden bg-secondary gap-10 text-white flex justify-center items-center flex-col top-20 left-0 w-full h-[80vh] font-semibold z-50'>
             <Link
               href={"/products"}
               className=' rounded-full hover:bg-gray-100 transition-all p-1.5 '>
@@ -158,7 +161,9 @@ const Header = () => {
                 <Link href={"/contact"}> Contact</Link>
               </div>
             ) : (
-              <div className='flex justify-center flex-col items-center gap-6'>
+              <div className='flex justify-center items-center flex-col gap-10'>
+                 <Link href={"/blogs"}>Blogs</Link>
+                <Link href={"/contact"}> Contact</Link>
                 <Link href={"/login"} className='font-bold text-lg  px-2 py-1'>
                   Login
                 </Link>

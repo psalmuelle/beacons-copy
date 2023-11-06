@@ -15,10 +15,31 @@ export default function Home() {
     <div>
       <Header />
       <main className=''>
-        <section className="h-[60vh] min-h-[500px] max-lg:h-[50vh] lg:h-[80vh] lg:bg-[url('../public/hero.png')]  max-lg:bg-[url('../public/mobile-hero.png')] bg-no-repeat bg-cover px-[4%] flex justify-start items-center ">
+        <motion.section
+          className="h-[60vh] min-h-[500px] max-lg:h-[50vh] lg:h-[80vh] lg:bg-[url('../public/hero.png')]  max-lg:bg-[url('../public/mobile-hero.png')] bg-no-repeat bg-cover px-[4%] flex justify-start items-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: [0.4, 0.6, 0.8, 1] }}
+          transition={{ duration: 1 }}>
           <div className='text-white max-w-2xl flex flex-col items-start gap-4'>
-            <h1 className='text-5xl max-lg:text-3xl font-bold'>
-              Discover Stylish Furniture to Transform Your Space!
+            <h1 className='text-6xl max-md:text-[40px] font-bold'>
+              Discover{"  "}
+              <motion.span className='inline-flex py-1.5 h-[76px] max-md:h-14 overflow-hidden'>
+                <motion.div
+                  animate={{ y: [0, -74, -74, -152, -152] }}
+                  transition={{
+                    delay: 0.1,
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatType: "mirror",
+                    repeatDelay: 1,
+                  }}
+                  className='flex flex-col gap-4 max-md:gap-9'>
+                  <div>Stylish</div>
+                  <div>Classy</div>
+                  <div>Elegant</div>
+                </motion.div>
+              </motion.span>{" "}
+              Furniture to Transform Your Space!
             </h1>
             <p className='text-xl max-lg:text-lg'>
               Find a bright ideal to suit your taste with our great selection of
@@ -28,7 +49,7 @@ export default function Home() {
               <Link href={"/products"}>Shop Now</Link>
             </Button>
           </div>
-        </section>
+        </motion.section>
 
         {/* Categories */}
         <div className='flex justify-center items-center gap-14 max-lg:gap-3 w-2/3 max-lg:w-full h-28 bg-white mx-auto lg:-mt-14 lg:shadow-lg rounded-lg'>
@@ -135,16 +156,16 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className=' w-4/5 bg-[#FAFAFA] py-10 px-[4%] rounded-r-lg drop-shadow-md shadow-black -mb-16'>
+        <section className=' w-4/5 bg-[#FAFAFA] py-16 px-[4%] drop-shadow-md -mb-16 mt-20'>
           <h1 className='text-3xl max-lg:text-2xl font-bold text-secondary max-w-sm'>
             Let's make your space amazing together
           </h1>
-          <p className='mt-10 underline text-secondary/70 hover:text-secondary/50 cursor-pointer w-fit'>
+          <p className='mt-6 underline text-secondary/70 hover:text-secondary/50 cursor-pointer w-fit'>
             REACH OUT TO US NOW
           </p>
         </section>
       </main>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
