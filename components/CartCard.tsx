@@ -17,7 +17,7 @@ const CartCard = () => {
   };
 
   return (
-    <section className='max-w-6xl py-4 drop-shadow-2xl my-4 border-b'>
+    <section className='max-w-6xl py-4  my-4 border-b'>
       <div className='flex justify-between items-center gap-4 max-md:flex-wrap'>
         <div className='w-full max-w-3xl flex items-center gap-4 max-md:flex-wrap justify-center'>
           <Image

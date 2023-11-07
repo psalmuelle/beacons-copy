@@ -6,7 +6,7 @@ import Link from "next/link";
 import CartCard from "@/components/CartCard";
 
 const Cart = () => {
-  const carts = ["w",'w'];
+  const carts = ["w", "w"];
   return (
     <div className=''>
       <Header />
@@ -30,16 +30,22 @@ const Cart = () => {
           </Link>
         </div>
       ) : (
-        <div className="px-[4%]">
+        <div className='px-[4%]'>
           <div>
-            <h1 className="text-[#284F49] text-2xl font-bold mt-16">Cart({carts.length})</h1>
+            <h1 className='text-[#284F49] text-2xl font-bold mt-16'>
+              Cart({carts.length})
+            </h1>
             {carts.map((val, i) => {
               return <CartCard key={i} />;
             })}
           </div>
-          <div className="flex justify-between items-center mt-10 mb-36">
-            <p className="text-2xl max-md:text-xl font-bold text-gray-900">Total:N60,000 </p>
-            <Button bgColor="secondary" className="w-48 max-md:w-36 h-12">Checkout</Button>
+          <div className='flex justify-between items-center mt-10 mb-36'>
+            <p className='text-2xl max-md:text-xl font-bold text-gray-900'>
+              Total:N60,000{" "}
+            </p>
+            <Button bgColor='secondary' className='w-48 max-md:w-36 h-12'>
+              Checkout
+            </Button>
           </div>
         </div>
       )}

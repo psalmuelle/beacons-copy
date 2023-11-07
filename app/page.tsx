@@ -123,9 +123,11 @@ export default function Home() {
               Allows you to view our showrooms containing our latest furniture
               collections
             </p>
-            <Button bgColor='secondary' className='mt-4 h-14 w-48'>
+            <Link className="mt-4" href={'/create-furniture'}>
+            <Button bgColor='secondary' className='h-14 w-48'>
               Coming soon...
             </Button>
+            </Link>
           </div>
           <Image width={545} height={356} src={"/egg-chair.png"} alt='' />
         </section>
