@@ -14,13 +14,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ ...props }) => {
   return (
     <motion.div
       whileHover={{ scale: 1.02 }}
-      className='relative w-[186px] text-left cursor-pointer bg-white hover:shadow-md shadow-secondary/60 transition rounded-lg'>
+      className='relative w-fit text-left cursor-pointer bg-white hover:shadow-md shadow-secondary/60 transition rounded-lg'>
       <Image
         height={186}
         width={186}
         alt={props.name}
         src={props.image}
-        className='h-[186px] w-[186px]'
+        className='h-[186px] w-[186px] max-md:h-[160px] max-md:w-[160px]'
       />
       <div className='p-2 pt-1'>
         <h1 className='text-sm overflow-hidden whitespace-nowrap text-ellipsis'>
