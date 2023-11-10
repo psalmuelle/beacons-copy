@@ -2,102 +2,47 @@
 
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import Link from "next/link";
 import Image from "next/image";
-import ProductCard from "@/components/ProductCard";
-import products from "@/appData/products";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from "react-responsive-carousel";
+import ProductSection from "@/components/ProductSection";
 
 const Products = () => {
+  const categories = ["Chairs", "Tables", "Bed", "Workstation"];
   return (
     <div>
       <Header />
       <main>
         <section className='w-full'>
-          {/* <Image height={} width={} src={} alt=""/> */}
-          <Carousel
-            autoPlay={true}
-            showArrows={false}
-            showStatus={false}
-            swipeable={true}>
-            <div className="w-full h-[40vh] min-h-[500px] bg-[url('../public/pexels-hero1.jpg')] bg-cover bg-center"></div>
-            <div className="w-full h-[40vh] min-h-[500px] bg-[url('../public/pexels-hero2.jpg')] bg-cover bg-center"></div>
-            <div className="w-full h-[40vh] min-h-[500px] bg-[url('../public/pexels-hero3.jpg')] bg-cover bg-center"></div>
-            <div className="w-full h-[40vh] min-h-[500px] bg-[url('../public/pexels-hero4.jpg')] bg-cover bg-center"></div>
-            <div className="w-full h-[40vh] min-h-[500px] bg-[url('../public/pexels-hero5.jpg')] bg-cover bg-center"></div>
-          </Carousel>
+          <div className="relative w-full h-[40vh] min-h-[500px] bg-[url('../public/pexels-hero5.jpg')] bg-cover bg-center flex justify-center items-center gap-4 flex-col px-[4%]">
+            <div className='w-full h-full absolute top-0 left-0 bg-secondary/50'></div>
+            <h1 className='z-50 text-white text-5xl font-extrabold max-md:text-3xl'>
+              Discover the Perfect Piece for Your Home!
+            </h1>
+            <p className='text-lg text-white/90 z-50'>
+              Browse our collection now and redefine your living spaces with our
+              exceptional furniture offerings.
+            </p>
+            <div className='relative w-full max-w-sm h-fit mt-8'>
+              <Image
+                width={20}
+                height={20}
+                src={"/Search.svg"}
+                alt='search'
+                className='absolute left-2 top-1/4'
+              />
+              <input
+                type='text'
+                placeholder='Search for minimalist chair'
+                className='block text-sm outline-none transition-all bg-secondary/70 text-white font-semibold focus:border-gray-300 pl-10 pr-4 py-2.5 w-full rounded-md border border-gray-200'
+              />
+            </div>
+          </div>
         </section>
-        <h1 className='text-center font-bold text-secondary text-3xl'>
+        <h1 className='text-center font-bold text-secondary text-3xl mb-14 mt-8'>
           Explore Our Store
         </h1>
-        <section className='max-w-6xl bg-black/5 my-8 mx-auto rounded'>
-          <div className='bg-secondary text-white rounded-t flex justify-between items-center py-4 px-4'>
-            <h1 className='font-bold text-lg'>Chairs</h1>
-            <Link href={"products/chairs"} className='hover:underline'>
-              See All
-            </Link>
-          </div>
-
-          <div className='w-full'>
-            <div className='w-fit min-w-min flex justify-center items-center flex-wrap gap-4  my-4 py-4 px-2 mx-auto'>
-              {products.map((val) => {
-                return <ProductCard key={val.id} {...val} />;
-              })}
-            </div>
-          </div>
-        </section>
-
-        <section className='max-w-6xl bg-black/5 mb-8 mx-auto rounded'>
-          <div className='bg-secondary text-white rounded-t flex justify-between items-center py-4 px-4'>
-            <h1 className='font-bold text-lg'>Table</h1>
-            <Link href={"products/table"} className='hover:underline'>
-              See All
-            </Link>
-          </div>
-
-          <div className='w-full'>
-            <div className='w-fit min-w-min flex justify-center items-center flex-wrap gap-4  my-4 py-4 px-2 mx-auto'>
-              {products.map((val) => {
-                return <ProductCard key={val.id} {...val} />;
-              })}
-            </div>
-          </div>
-        </section>
-
-        <section className='max-w-6xl bg-black/5 mb-8 mx-auto rounded'>
-          <div className='bg-secondary text-white rounded-t flex justify-between items-center py-4 px-4'>
-            <h1 className='font-bold text-lg'>Bed</h1>
-            <Link href={"products/bed"} className='hover:underline'>
-              See All
-            </Link>
-          </div>
-
-          <div className='w-full'>
-            <div className='w-fit min-w-min flex max-md:grid grid-cols-2 justify-center items-center flex-wrap gap-4  my-4 py-4 mx-auto'>
-              {products.map((val) => {
-                return <ProductCard key={val.id} {...val} />;
-              })}
-            </div>
-          </div>
-        </section>
-
-        <section className='max-w-6xl bg-black/5 mb-8 mx-auto rounded'>
-          <div className='bg-secondary text-white rounded-t flex justify-between items-center py-4 px-4'>
-            <h1 className='font-bold text-lg'>Workstation</h1>
-            <Link href={"products/workstation"} className='hover:underline'>
-              See All
-            </Link>
-          </div>
-
-          <div className='w-full'>
-            <div className='w-fit min-w-min flex justify-center items-center flex-wrap gap-4  my-4 py-4 px-2 mx-auto'>
-              {products.map((val) => {
-                return <ProductCard key={val.id} {...val} />;
-              })}
-            </div>
-          </div>
-        </section>
+        {categories.map((val, i) => {
+          return <ProductSection title={val} key={i} />;
+        })}
       </main>
       <Footer />
     </div>

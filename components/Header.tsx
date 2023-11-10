@@ -7,48 +7,9 @@ import { motion, AnimatePresence } from "framer-motion";
 
 //Nav Menu on the header
 const Nav = () => {
-  const productLists = ["Chairs", "Tables", "Bed", "Workstation"];
-
-  const [showProducts, setShowProducts] = useState(false);
-
-  const handleShowProducts = () => {
-    setShowProducts(!showProducts);
-  };
   return (
     <div className=' flex justify-center items-center max-lg:flex-col gap-10 font-semibold'>
-      <div className='relative'>
-        <div
-          className='max-lg:hidden flex justify-center items-center gap-1 cursor-pointer'
-          onClick={handleShowProducts}>
-          <p>Products</p>
-          <Image
-            width={20}
-            height={20}
-            src={"/Arrow-down.svg"}
-            alt='dropdown'
-            className={`${showProducts && "rotate-180"} transition-all`}
-          />
-        </div>
-        <AnimatePresence>
-          {showProducts && (
-            <motion.div
-              initial={{ opacity: 0, y: -40 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              className='absolute top-10 flex justify-center flex-col gap-2 font-normal bg-white shadow-md p-4 rounded-b-lg z-50'>
-              {productLists.map((product, index) => (
-                <div
-                  key={index}
-                  className='hover:bg-gray-50/40 px-2 py-1 rounded-lg'>
-                  <Link href={`/products/${product.toLowerCase()}`}>
-                    {product}
-                  </Link>
-                </div>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+      <Link href={"/products"}>Products</Link>
       <Link href={"/blogs"}>Blogs</Link>
       <Link href={"/contact"}> Contact</Link>
     </div>
@@ -102,24 +63,26 @@ const Header = () => {
             <Image width={24} height={24} alt='favourite' src={"/Cart.svg"} />
           </Link>
 
-          <div className="relative">
+          <div className='relative'>
             <Image
               width={24}
               height={24}
               alt='Profile'
               src={"/profile-pic.png"}
               onClick={() => setOpenProfile(!openProfile)}
-              className="cursor-pointer"
+              className='cursor-pointer'
             />
             <AnimatePresence>
               {openProfile && (
                 <motion.div
                   initial={{ opacity: 0, y: -40 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y:-20 }}
-                  className='absolute top-10 right-0 flex justify-center flex-col gap-2 font-normal bg-white shadow-md p-2 rounded-b-lg'>
+                  exit={{ opacity: 0, y: -20 }}
+                  className='absolute top-10 right-0 flex justify-center flex-col gap-2 font-normal bg-white shadow-md p-2 rounded-b-lg z-50'>
                   <div className='hover:bg-gray-50/40 px-2 py-1 rounded-lg'>
-                    <Link href={`/orders`} className='whitespace-nowrap'>My Orders</Link>
+                    <Link href={`/orders`} className='whitespace-nowrap'>
+                      My Orders
+                    </Link>
                   </div>
                 </motion.div>
               )}
@@ -156,21 +119,18 @@ const Header = () => {
             animate={{ y: 0, opacity: 1 }}
             exit={{ x: 0, y: -500, opacity: 0 }}
             transition={{ type: "tween" }}
-            className='absolute lg:hidden bg-secondary gap-10 text-white flex justify-center items-center flex-col top-20 left-0 w-full h-[80vh] font-semibold z-50'>
-            <Link
-              href={"/products"}
-              className=' rounded-full transition-all p-1.5 '>
+            className='absolute lg:hidden bg-secondary gap-10 text-white flex justify-center items-center flex-col top-20 left-0 w-full h-[80vh] font-semibold z-[100]'>
+            <Link href={"/"}>Home</Link>
+            <Link href={"/products"} className='p-1.5 '>
               Products
             </Link>
             {login ? (
               <div className=' flex justify-center items-center flex-col gap-10'>
-                <div className='cursor-pointer rounded-full transition-all p-1.5 '>
+                <div className='cursor-pointer transition-all p-1.5 '>
                   Favourites
                 </div>
 
-                <Link
-                  href={"/cart"}
-                  className=' rounded-full transition-all p-1.5 '>
+                <Link href={"/cart"} className='transition-all p-1.5 '>
                   My Cart
                 </Link>
                 <Link href={"/blogs"}>Blogs</Link>

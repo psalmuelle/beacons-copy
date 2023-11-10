@@ -75,9 +75,9 @@ export default function Home() {
 
         {/* Features */}
         <section className='mt-12 flex justify-evenly items-center gap-10 px-[4%] max-lg:hidden'>
-          {features.map((val) => {
+          {features.map((val,i) => {
             return (
-              <div className='flex justify-center items-center gap-4'>
+              <div className='flex justify-center items-center gap-4' key={i}>
                 <Image width={40} height={40} src={val.image} alt={val.title} />
                 <div>
                   <h2 className='text-lg font-semibold'>{val.title}</h2>

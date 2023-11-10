@@ -8,6 +8,7 @@ const products = [
     newPrice: "₦100",
     oldPrice: "₦1000",
     image: "/Product-pic2.png",
+    category: 'chairs'
   },
   {
     id: "2",
@@ -16,6 +17,7 @@ const products = [
     newPrice: "₦200",
     oldPrice: "₦1000",
     image: "/Product-pic.png",
+    category: 'chairs'
   },
   {
     id: "3",
@@ -24,6 +26,7 @@ const products = [
     newPrice: "₦300",
     oldPrice: "₦1000",
     image: "/Product-pic1.png",
+    category: 'tables'
   },
   {
     id: "4",
@@ -32,6 +35,7 @@ const products = [
     newPrice: "₦400",
     oldPrice: "₦1000",
     image: "/Product-pic2.png",
+    category: 'tables'
   },
   {
     id: "5",
@@ -40,6 +44,7 @@ const products = [
     newPrice: "₦500",
     oldPrice: "₦1000",
     image: "/Product-pic1.png",
+    category: 'beds'
   },
   {
     id: "6",
@@ -48,6 +53,7 @@ const products = [
     newPrice: "₦600",
     oldPrice: "₦1000",
     image: "/Product-pic.png",
+    category: 'workstation'
   },
   {
     id: "7",
@@ -56,6 +62,7 @@ const products = [
     newPrice: "₦700",
     oldPrice: "₦1000",
     image: "/Product-pic2.png",
+    category: 'beds'
   },
   {
     id: "8",
@@ -64,6 +71,7 @@ const products = [
     newPrice: "₦800",
     oldPrice: "₦1000",
     image: "/Product-pic.png",
+    category: 'chairs'
   },
   {
     id: "9",
@@ -72,6 +80,7 @@ const products = [
     newPrice: "₦900",
     oldPrice: "₦1000",
     image: "/Product-pic.png",
+    category: 'bed'
   },
   {
     id: "10",
@@ -80,6 +89,7 @@ const products = [
     newPrice: "₦900",
     oldPrice: "₦1000",
     image: "/Product-pic.png",
+    category: 'chairs'
   },
 ];
 
