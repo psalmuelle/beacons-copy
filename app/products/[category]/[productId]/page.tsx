@@ -137,7 +137,7 @@ const ProductInfo = () => {
 
       {/* 3D Image Container */}
       {show3D && (
-        <div className='fixed top-0 left-0 w-screen h-screen bg-gray-400/30 flex justify-center items-center'>
+        <div className='fixed top-0 left-0 w-screen h-screen bg-gray-400/30 backdrop-blur flex justify-center items-center'>
           <div className='relative bg-white w-[90%] max-w-lg h-[90%] rounded flex justify-center items-center'>
             <ThreeImage />
             <div className='absolute h-20 w-full bottom-0 bg-secondary text-white px-4'>
